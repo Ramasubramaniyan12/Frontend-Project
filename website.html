@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Finance | Wealth & Asset Management</title>
+    <style>
+        /* Professional Finance Color Palette */
+        :root {
+            --primary-navy: #0a192f;
+            --accent-gold: #c5a059;
+            --slate-gray: #475569;
+            --light-bg: #f8fafc;
+            --white: white;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', serif; line-height: 1.6; color: var(--primary-navy); background-color: var(--white); }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .company-name { 
+            font-size: 26px; 
+            font-weight: 700; 
+            letter-spacing: 1px; 
+            color: var(--primary-navy);
+            text-transform: uppercase;
+        }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .search-bar { 
+            padding: 10px 15px; 
+            border: 1px solid var(--border); 
+            border-radius: 4px; 
+            outline: none; 
+            font-family: sans-serif;
+        }
+
+        .header-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--primary-navy);
+            border: 2px solid var(--accent-gold);
+        }
+        .header-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Nav & Dropdown Logic */
+        nav { background: var(--primary-navy); padding: 0 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        nav ul { list-style: none; display: flex; }
+        
+        nav ul li { position: relative; }
+        
+        nav ul li a { 
+            color: var(--white); 
+            text-decoration: none; 
+            padding: 20px 25px; 
+            display: block; 
+            font-size: 14px; 
+            font-family: sans-serif;
+            font-weight: 500;
+            transition: 0.3s; 
+            letter-spacing: 0.5px;
+        }
+        nav ul li a:hover { color: var(--accent-gold); background: rgba(255,255,255,0.05); }
+
+        /* Dropdown Menu Styling */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--primary-navy);
+            min-width: 220px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+            z-index: 100;
+            padding: 0;
+            border-top: 2px solid var(--accent-gold);
+        }
+        
+        .dropdown li { width: 100%; }
+        
+        .dropdown li a {
+            padding: 15px 20px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav ul li:hover .dropdown { display: block; }
+
+        /* Layout */
+        .main-container { display: flex; padding: 60px 40px; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .sidebar { width: 280px; flex-shrink: 0; }
+        .sidebar h3 { 
+            margin-bottom: 25px; 
+            font-size: 20px; 
+            border-bottom: 2px solid var(--accent-gold); 
+            padding-bottom: 10px;
+            color: var(--primary-navy);
+        }
+        
+        .middle-content { flex: 1; }
+        .middle-content h2 { 
+            font-size: 38px; 
+            margin-bottom: 25px; 
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+        .middle-content p { font-family: 'Times New Roman', serif; font-size: 18px; color: var(--slate-gray); }
+
+        /* Dynamic Image Card */
+        .image-card {
+            width: 100%;
+            height: 200px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+        }
+        .image-card img { width: 100%; height: 100%; object-fit: cover; filter: sepia(20%); }
+
+        .interaction-status { 
+            margin-top: 40px; 
+            padding: 25px; 
+            background: var(--light-bg); 
+            border-radius: 4px; 
+            border-left: 5px solid var(--accent-gold); 
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer { 
+            background: var(--primary-navy); 
+            color: #cbd5e1; 
+            padding: 60px 40px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; 
+            align-items: center; 
+            border-top: 5px solid var(--accent-gold);
+            font-family: sans-serif;
+        }
+        .footer-center { text-align: center; color: var(--white); }
+        .footer-right { text-align: right; }
+        .social-links a { color: var(--accent-gold); text-decoration: none; margin-left: 20px; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="company-name">Super Finance</div>
+        <div class="header-right">
+            <input type="text" class="search-bar" placeholder="Market search...">
+            <div class="header-image">
+                <img src="https://images.unsplash.com/photo-1579621970795-87f967b16c8a?auto=format&fit=crop&w=100&q=80" alt="Super Finance Logo">
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Asset Management ▼</a>
+                <ul class="dropdown">
+                    <li><a href="#">Private Equity</a></li>
+                    <li><a href="#">Wealth Strategy</a></li>
+                    <li><a href="#">Risk Mitigation</a></li>
+                    <li><a href="#">Global Markets</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Institutional ▼</a>
+                <ul class="dropdown">
+                    <li><a href="#">Corporate Treasury</a></li>
+                    <li><a href="#">Investment Banking</a></li>
+                    <li><a href="#">Capital Markets</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Market Insights</a></li>
+            <li><a href="#">Advisory</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>Institutional Pillars</h3>
+            <p><strong>Excellence</strong>: Delivering superior returns through rigorous analysis.</p>
+            <p style="margin-top:20px;"><strong>Discretion</strong>: Maintaining the highest standards of client confidentiality.</p>
+        </aside>
+
+        <main class="middle-content">
+            <h2>Securing Your Legacy Through Strategic Capital</h2>
+            <p>Super Finance provides bespoke investment solutions for high-net-worth individuals and global institutions. We blend traditional wisdom with modern algorithmic precision.</p>
+            
+            <div class="interaction-status" id="status-box">
+                <strong>Dashboard:</strong> Select a division to view performance metrics.
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Market Watch</h3>
+            <div class="image-card">
+                <img id="rotator" src="https://images.unsplash.com/photo-1611974714131-300890696956?auto=format&fit=crop&w=400&h=300&q=80" alt="Market News">
+            </div>
+            <p style="font-size: 13px; color: var(--slate-gray); font-style: italic;">Real-time analysis from our global trading floors.</p>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-left">
+            <p>Financial District, Suite 500<br>New York, NY 10004</p>
+        </div>
+        <div class="footer-center">
+            <p>&copy; 2026 Super Finance Holdings. Member FINRA/SIPC.</p>
+        </div>
+        <div class="footer-right">
+            <div class="social-links">
+                <a href="#">Bloomberg</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Financial news rotation
+        const newsImages = [
+            "https://images.unsplash.com/photo-1611974714131-300890696956?auto=format&fit=crop&w=400&h=300&q=80", 
+            "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=400&h=300&q=80", 
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&h=300&q=80"
+        ];
+        
+        let i = 0;
+        setInterval(() => {
+            i = (i + 1) % newsImages.length;
+            document.getElementById('rotator').src = newsImages[i];
+        }, 4000);
+
+        // Interaction Tracker
+        document.body.addEventListener('click', (e) => {
+            const section = e.target.closest('header, nav, aside, main, footer');
+            if (section) {
+                const name = section.tagName === 'ASIDE' ? 'Division' : section.tagName;
+                const statusBox = document.getElementById('status-box');
+                statusBox.innerHTML = `<strong>Viewing Division:</strong> ${name}`;
+                statusBox.style.background = "#fffbf0";
+                statusBox.style.borderColor = "#c5a059";
+            }
+        });
+    </script>
+</body>
+</html>
